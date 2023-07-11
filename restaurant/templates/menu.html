@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Little Lemon</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header>
+            <img src="{% static 'img/menu_items/Bruschetta.jpg' %}">
+            <img src="{% static 'img/menu_items/Greek salad.jpg' %}">
+            <img src="{% static 'img/menu_items/Grilled fish.jpg' %}">
+            <img src="{% static 'img/menu_items/Lemon dessert.jpg' %}">
+        </header>
+    </body>
+</html>
+
+<!--Begin col-->
+<div class="column">
+    {% for item in menu.menu %}
+    <p>
+        <a href="{% url 'menu_item' pk=item.pk %}">
+            {{ item.name }}
+            </a>
+        <span class="menu-price">
+            ${{ item.price }}.00
+        </span>
+    </p>
+    {% endfor %}
+</div>
+<!--End col-->
+
+{% endblock %}
